@@ -1,9 +1,9 @@
 spring:
     datasource:
         driverClassName: com.mysql.jdbc.Driver
-        url: jdbc:mysql://rm-bp1k07h3k0tm18j2yuo.mysql.rds.aliyuncs.com:3306/jimu_uniapp?useUnicode=true&characterEncoding=utf8
-        username: jmkj_admin
-        password: 9c4ce9fdf32c7d7b7b22f1aa583d465@
+        url: jdbc:mysql://139.186.137.195:3306/finacial?useUnicode=true&characterEncoding=utf8
+        username: root
+        password: 123456
         initialSize: 1
         minIdle: 3
         maxActive: 20

@@ -6,36 +6,36 @@ import java.util.Map;
 public class Query extends LinkedHashMap<String, Object> {
     private static final long serialVersionUID = 1L;
     //
-    private int offset;
+    private int curPage;
     // 每页条数
-    private int limit;
+    private int pageSize;
     // 当前页数
     private int pageIndex;
 
     public Query(Map<String, Object> params) {
         this.putAll(params);
         // 分页参数
-        this.offset = Integer.parseInt(params.get("offset").toString());
-        this.limit = Integer.parseInt(params.get("limit").toString());
-        this.pageIndex = params.get("pageIndex") == null ? 1 : Integer.parseInt(params.get("pageIndex").toString());
-        this.put("offset", offset);
-        this.put("page", (pageIndex-1) * limit);
-        this.put("limit", limit);
+        this.curPage = Integer.parseInt(params.get("curPage").toString());
+        this.pageSize = Integer.parseInt(params.get("pageSize").toString());
+        this.pageIndex = params.get("curPage") == null ? 1 : Integer.parseInt(params.get("curPage").toString());
+        this.put("curPage", curPage);
+        this.put("page", (pageIndex-1) * pageSize);
+        this.put("limit", pageSize);
     }
 
-    public int getOffset() {
-        return offset;
+    public int getCurPage() {
+        return curPage;
     }
 
-    public void setOffset(int offset) {
-        this.put("offset", offset);
+    public void setCurPage(int curPage) {
+        this.put("curPage", curPage);
     }
 
-    public int getLimit() {
-        return limit;
+    public int getPageSize() {
+        return pageSize;
     }
 
-    public void setLimit(int limit) {
-        this.limit = limit;
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
     }
 }

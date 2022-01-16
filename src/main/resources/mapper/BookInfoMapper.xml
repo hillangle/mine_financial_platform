@@ -12,5 +12,16 @@
 
     <select id="queryBookInfos" resultMap="bookInfo">
         select * from BOOK_INFO
+        <where>
+            <if test="bookName != null and bookName != ''"> and BOOK_NAME like '%${bookName}%'</if>
+            <if test="bookType != null and bookType != ''"> and BOOK_TYPE = #{bookType}</if>
+            <if test="bookDate != null and bookDate != ''"> and BOOK_DATE >= #{bookDate}</if>
+        </where>
+        order by BOOK_DATE desc
+        limit #{page} , #{limit}
     </select>
+
+    <insert id="addBookInfo" parameterType="com.mine.financial.mapper.domain.BookInfo">
+        insert into BOOK_INFO(BOOK_DATE, BOOK_NAME, BOOK_TYPE, DEBIT, CREDIT) VALUES (#{bookDate}, #{bookName}, #{bookType}, #{debit}, #{credit})
+    </insert>
 </mapper>
